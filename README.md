@@ -29,7 +29,7 @@ Add the following `.env` file to your root folder with these considerations: \
 `MONGODB_URI`, Follow presentation process to link project to your MongoDB Cluster. \
 `JWT_SECRET`, Generate a 128 character hash using https://codebeautify.org/generate-random-string. \
 `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, You can use the provided ones below or make your own project on Google Cloud Console. 
-```shell
+```yaml
 JWT_SECRET = 
 MONGODB_URI = mongodb+srv://<username>:<password>@collablabdb.4faa3in.mongodb.net/?retryWrites=true&w=majority
 

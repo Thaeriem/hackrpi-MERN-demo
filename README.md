@@ -16,7 +16,7 @@
 The following steps have already been completed for you but are listed in case you want to learn about building the project from scratch. 
 
 Initializing the React application:  
-```r 
+```console
 npx create-react-app hackrpi-demo --template typescript
 ```
 Create basic template for Express & MongoDB/Mongoose implementation (example implementation is included in `final` branch)
@@ -28,8 +28,8 @@ Create basic template for Express & MongoDB/Mongoose implementation (example imp
 Add the following `.env` file to your root folder with these considerations: \
 `MONGODB_URI`, Follow presentation process to link project to your MongoDB Cluster. \
 `JWT_SECRET`, Generate a 128 character hash using https://codebeautify.org/generate-random-string. \
-`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, You can use the provided ones below or make your own project on Google Cloud Console. \
-```r
+`GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, You can use the provided ones below or make your own project on Google Cloud Console. 
+```shell
 JWT_SECRET = 
 MONGODB_URI = mongodb+srv://<username>:<password>@collablabdb.4faa3in.mongodb.net/?retryWrites=true&w=majority
 

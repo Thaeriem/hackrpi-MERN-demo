@@ -17,11 +17,11 @@ The following steps have already been completed for you but are listed in case y
 
 Initializing the React application:  
 ```console
-npx create-react-app hackrpi-demo --template typescript
+npx create-react-app frontend --template typescript
 ```
 Create basic template for Express & MongoDB/Mongoose implementation (example implementation is included in `final` branch)
 
-## Creating a `.env` file, why is it important?
+## Creating an `.env` file, why is it important?
 
 `.env` files securely store sensitive information for software applications, ensuring separation from the codebase for security and portability.
 
@@ -29,10 +29,14 @@ Add the following `.env` file to your root folder with these considerations: \
 `MONGODB_URI`, Follow presentation process to link project to your MongoDB Cluster. \
 `JWT_SECRET`, Generate a 128 character hash using https://codebeautify.org/generate-random-string. \
 `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, You can use the provided ones below or make your own project on Google Cloud Console. 
-```yaml
-JWT_SECRET = 
-MONGODB_URI = mongodb+srv://<username>:<password>@collablabdb.4faa3in.mongodb.net/?retryWrites=true&w=majority
+> [!IMPORTANT]
+> Never commit your `.env` file to any repository as this will expose your authentication keys and potentially compromise your or others sensitive information
 
-GOOGLE_CLIENT_ID = 
-GOOGLE_CLIENT_SECRET = 
+```yaml
+JWT_SECRET = [Add 128 character hash here]
+MONGODB_URI = mongodb+srv://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
+GOOGLE_CLIENT_ID = 597392536070-9gsi2fgio9p2lbir4ildr4jsfkkqiovv.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET = 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
 ```
+
+## 

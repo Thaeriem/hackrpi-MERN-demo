@@ -15,15 +15,13 @@ function validateInputs(body: any, fields: any) {
   return true;
 }
 
-async function checkValidAccount(
-  name: string,
-  email: string
-): Promise<IAccount> {
+async function checkValidAccount(name: string, email: string): Promise<IAccount> {
   const user = await Account.findOne({
     $or: [{ username: name }, { email: email }],
   });
+
   return new Promise((resolve) => {
-    if (user) resolve(user);
+    resolve(user);
   });
 }
 
@@ -36,15 +34,10 @@ async function createAccount(body: any) {
     password: hashedPassword,
     salt: salt,
     email: body.email,
-    displayName: body.displayName,
-    plan: "none",
-    hasTrial: false,
-    endDate: undefined,
-    org_id: "",
-    room_ids: [],
+    displayName: body.displayName
   });
 
-  return jwt.sign({ username: body.email, scope: body.scope }, JWT_SECRET);
+  return jwt.sign({ username: body.email }, JWT_SECRET);
 }
 
 function authLocal(req: Request, res: Response, next: NextFunction) {
@@ -61,11 +54,7 @@ function authLocal(req: Request, res: Response, next: NextFunction) {
 }
 
 export function authGoogle(req: Request, res: Response, next: NextFunction) {
-  passport.authenticate("google", { scope: ["profile", "email"] })(
-    req,
-    res,
-    next
-  );
+  passport.authenticate("google", { scope: ["profile", "email"] })(req, res, next);
 }
 
 export function receiveGoogle(req: Request, res: Response, next: NextFunction) {
@@ -73,9 +62,7 @@ export function receiveGoogle(req: Request, res: Response, next: NextFunction) {
     if (err) return next(err);
     req.body.username = profile.email || profile.emails[0].value;
     if (!req.body.username)
-      return res
-        .status(400)
-        .json({ status: "error", code: "no email attached to account" });
+      return res.status(400).json({ status: "error", code: "no email attached to account" });
 
     const user = await checkValidAccount(req.body.username, req.body.username);
     if (!user) {
@@ -123,34 +110,5 @@ export class AccountController {
 
   public authAccount(req: Request, res: Response, next: NextFunction) {
     return authLocal(req, res, next);
-  }
-
-  public async updateAccount(req: Request, res: Response): Promise<void> {
-    const user_email = req.params.email;
-    // input validation
-    const template = { username: "", password: "", displayName: "" };
-    if (!validateInputs(req.body, template)) {
-      res.status(400).json({ status: "error", code: "invalid fields" });
-      return;
-    }
-    // check duplicate username
-    const username = req.body.username || "";
-    const user = await Account.findOne({ email: user_email });
-
-    // if username is same as old username no problem
-
-    if (user && user.username != username) {
-      const valid = await checkValidAccount(username, "");
-      if (valid) {
-        res.status(400).json({ status: "error", code: "invalid request" });
-        return;
-      }
-    }
-
-    req.body.password = bcrypt.hashSync(req.body.password, req.params.salt);
-
-    Account.findOneAndUpdate({ email: user_email }, req.body).then(() => {
-      res.status(200).json({ status: res.status, code: "account updated!" });
-    });
   }
 }

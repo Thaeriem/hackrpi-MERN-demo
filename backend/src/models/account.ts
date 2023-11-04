@@ -36,7 +36,7 @@ accountSchema.methods.comparePassword = function (
   bcrypt.compare(
     candidatePassword,
     user.password,
-    (err: Error | undefined, isMatch: boolean) => {
+    (err: Error, isMatch: boolean) => {
       callback(err, isMatch);
     }
   );

@@ -3,11 +3,7 @@ import passportLocal from "passport-local";
 import passportJwt from "passport-jwt";
 import passportGoogle from "passport-google-oauth20";
 import { Account } from "../models/account";
-import {
-  JWT_SECRET,
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-} from "../util/secrets";
+import { JWT_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from "../util/secrets";
 
 const LocalStrategy = passportLocal.Strategy;
 const JwtStrategy = passportJwt.Strategy;

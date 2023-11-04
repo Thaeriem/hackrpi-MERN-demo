@@ -17,7 +17,7 @@ The following steps have already been completed for you but are listed in case y
 
 Initializing the React application:  
 ```console
-npx create-react-app frontend --template typescript
+npm create vite@latest frontend --template react-ts
 ```
 Create basic template for Express & MongoDB/Mongoose implementation (example implementation is included in `final` branch)
 

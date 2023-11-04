@@ -44,10 +44,48 @@ export const Login = () => {
                 <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="username" id="username" name="username" />
                 <label htmlFor="password">Password</label>
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-                <button type="submit">Log In</button>
+                <button
+  type="submit"
+  style={{
+    backgroundColor: '#ffffff',
+    color: '#000000',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '10px',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  }}
+>
+  Log In
+</button>
+
             </form>
-            <div style={{ marginTop: '3px' }}></div>
-            <button onClick={handleCustomLogin}>Custom Login</button>
+            <div style={{ marginTop: '8px' }}></div>
+            <button
+                onClick={handleCustomLogin}
+                style={{
+                    backgroundColor: 'white',
+                    color: '#000000',
+                    padding: '10px 20px',
+                    border: '1px solid #A9A9A9',
+                    borderRadius: '10px',
+                    fontSize: '16px',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                }}
+                >
+                <img
+                    src="https://developers.google.com/identity/images/g-logo.png"
+                    alt="Google Logo"
+                    style={{ marginRight: '10px', width: '30px', height: '30px' }}
+                />
+                Sign in with Google
+            </button>
+
             <button className="link-btn" onClick={() => navigate('/register')}>Don't have an account? Register here.</button>
         </div>
     )

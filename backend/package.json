@@ -24,8 +24,8 @@
         "typescript": "^4.1.6"
     },
     "scripts": {
-        "start": "npm run build; npm run serve",
-        "build": "npm run build-ts; npm run eslint",
+        "start": "npm run build && npm run serve",
+        "build": "npm run build-ts && npm run eslint",
         "build-ts": "tsc",
         "serve": "node dist/server.js",
         "eslint": "eslint . --ext ts --report-unused-disable-directives --max-warnings 0",

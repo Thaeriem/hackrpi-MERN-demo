@@ -103,7 +103,6 @@ export class AccountController {
       res.status(400).json({ status: "error", code: "invalid request" });
       return;
     }
-    req.body.displayName = "";
     const token = await createAccount(req.body);
     res.status(201).send({ token: token });
   }

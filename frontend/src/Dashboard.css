@@ -1,0 +1,23 @@
+table {
+    width: 500px;
+    border: 2px solid white;
+    border-radius: 10px;
+    border-spacing: 0px;
+    font-size: 1.2em;
+}
+
+table tbody tr td {
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-style: solid;
+    border-color: white;
+}
+tbody tr td {
+    padding: 1rem;
+}
+
+table tbody tr td:last-child {
+    border-right: 0px;
+}

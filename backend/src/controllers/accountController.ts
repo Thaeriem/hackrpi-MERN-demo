@@ -73,23 +73,23 @@ export function receiveGoogle(req: Request, res: Response, next: NextFunction) {
       createAccount(req.body)
         .then((token: any) => {
           const string = encodeURIComponent(token);
-          res.redirect("http://localhost:8080/oauth?token=" + string);
+          res.redirect("http://localhost:8000/dashboard?token=" + string);
         })
         .catch(() => {
-          res.redirect("http://localhost:8080/oauth?token=error");
+          res.redirect("http://localhost:8000/dashboard?token=error");
         });
     } else {
       const token = jwt.sign({ username: user.email }, JWT_SECRET);
 
       const string = encodeURIComponent(token);
-      res.redirect("http://localhost:8080/oauth?token=" + string);
+      res.redirect("http://localhost:8000/dashboard?token=" + string);
     }
   })(req, res, next);
 }
 
 export class AccountController {
   public async registerAccount(req: Request, res: Response): Promise<void> {
-    const template = { username: "", password: "", email: "" };
+    const template = { username: "", password: "", email: "", displayName: "" };
     if (!validateInputs(req.body, template)) {
       res.status(400).json({ status: "error", code: "invalid fields" });
       return;

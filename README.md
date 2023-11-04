@@ -30,7 +30,8 @@ Add the following `.env` file to your root folder with these considerations: \
 `JWT_SECRET`, Generate a 128 character hash using https://codebeautify.org/generate-random-string. \
 `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`, You can use the provided ones below or make your own project on Google Cloud Console. 
 > [!IMPORTANT]
-> Never commit your `.env` file to any repository as this will expose your authentication keys and potentially compromise your or others sensitive information
+> Never commit your `.env` file to any repository as this will expose your authentication keys and potentially compromise your or other's sensitive information
+
 
 ```yaml
 JWT_SECRET = [Add 128 character hash here]
